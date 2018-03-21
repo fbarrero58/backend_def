@@ -99,4 +99,25 @@
 
     }
 
+    /**
+	 * Recibe una imagen y la guarda en la carpeta img
+	 *
+	 * @param string    $destino => usuarios || configuracion
+     * @param array    $archivo => Imagen a guardar
+	 *
+	 * @return boolean   True => Lo pudo guardar, de lo contrario False
+	 */
+    function subir_archivo($destino, $archivo){
+        $uploaddir = APPPATH.'/img/'.$destino.'/';
+        $uploadfile = $uploaddir . basename($archivo['archivo']['name']);
+
+        if (move_uploaded_file($archivo['archivo']['tmp_name'], $uploadfile)) {
+            $data = true;       
+        }else {
+            $data = false;        
+        }
+
+        return $data;
+    }
+
 ?>

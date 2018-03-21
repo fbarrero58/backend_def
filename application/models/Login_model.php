@@ -42,7 +42,8 @@ class Login_model extends CI_Model {
                 $respuesta = array(
                     'err' => FALSE,
                     'token' => $token,
-                    'setear' => FALSE
+                    'setear' => FALSE,
+                    'id_usuario' => $query->row()->id_usuario
                 );
 
             }

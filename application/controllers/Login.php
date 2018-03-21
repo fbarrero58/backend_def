@@ -22,6 +22,25 @@ class Login extends REST_Controller {
         return $this->response('saludos desde el get');
     }
 
+    public function imagen_post(){
+
+        $resultado = subir_archivo('usuarios',$_FILES);
+
+        if( $resultado ){
+            $respuesta = array(
+                'OK' => TRUE,
+                'mensaje' => 'Archivo cargado exitosamente'
+            );
+            return $this->response($respuesta);
+        }else{
+            $respuesta = array(
+                'OK' => FALSE,
+                'mensaje' => 'No se pudo cargar el archivo'
+            );
+            return $this->response($respuesta,500);
+        }
+    }
+
     /*******************************
         POST - Iniciar Sesión
     *******************************/
@@ -30,16 +49,10 @@ class Login extends REST_Controller {
 
         $data = $this->post();  
 
-        // $data = json_decode($data);
-
         $respuesta = array(
             'OK' => TRUE,
             'mensaje' => $data
         );
-
-        //return $this->response($respuesta);
-
-        //return $this->response($data);
 
         $respuesta = $this->Login_model->ingresar($data);
 
@@ -59,7 +72,7 @@ class Login extends REST_Controller {
 
         $data = $this->put();
         $respuesta = $this->Login_model->nueva_pass($data);
-        $this->response($respuesta);
+        return $this->response($respuesta);
 
     }
 
