@@ -121,7 +121,6 @@ class Usuarios extends REST_Controller {
                 return $this->response($respuesta);
 
             }else{
-
                 $respuesta = array(
                     'err' => TRUE,
                     'mensaje' => $this->form_validation->get_errores_arreglo()
