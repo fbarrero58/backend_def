@@ -100,7 +100,7 @@ class Vmca_model extends CI_Model {
         $resultado = array(
             'err' => FALSE,
             'mensaje' => 'Modulos cargados exitosamente',
-            'módulos' => $query->result()
+            'tipos' => $query->result()
         );
 		return $resultado;
 	}
