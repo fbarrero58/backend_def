@@ -95,7 +95,7 @@ class Vmca_model extends CI_Model {
 
 	public function traer_tipoempresa(){
 		$this->db->select('*');
-        $this->db->from('vmca_modulos');
+        $this->db->from('vmca_tipo_empresa');
         $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
