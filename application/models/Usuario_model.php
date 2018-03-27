@@ -87,7 +87,7 @@ class Usuario_model extends CI_Model {
 
     public function obtener($id){
         if ($id == null){
-            $this->db->select('u.id, u.foto, i.nombres');
+            $this->db->select('u.id, u.foto, i.nombres, i.apellidos, u.cargo');
             $this->db->from('usuario as u' );
             $this->db->join('usuarios_info_personal as i', 'u.id = i.id_usuario',"left");
         }else{           
