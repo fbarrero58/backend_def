@@ -172,7 +172,7 @@ class Usuario_model extends CI_Model {
 
         $query = $this->db->get_where('modulos_usuarios',$data_insert);
 
-        if( $query->num_rows() > 0 ){
+        if( $query->num_rows() == 0 ){
             $this->db->insert('modulos_usuarios', $data_insert);
             $respuesta = array(
                 'err' => FALSE,
