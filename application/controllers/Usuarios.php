@@ -39,10 +39,10 @@ class Usuarios extends REST_Controller {
             $resultado = $this->Usuario_model->insertar($data);
 
             if ($resultado['err']){
-                return $this->response($resultado, 404);
+                return $this->response($resultado, 400);
             }else{
                 $respuesta = array(
-                    'err' => False,
+                    'err' => FALSE,
                     'mensaje' => 'Usuario creado exitosamente'
                 );
                 //ENVIAR CORREO ELECTRONICO

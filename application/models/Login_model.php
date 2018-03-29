@@ -16,11 +16,11 @@ class Login_model extends CI_Model {
 
     public function ingresar($data) {
 
-        $data['pass'] = hash('ripemd160',$data['pass']);
+        $data['password'] = hash('ripemd160',$data['password']);
 
         $data_login = array(
             'correo' => $data['correo'],
-            'password' => $data['pass']
+            'password' => $data['password']
         );
 
         $query = $this->db->get_where('login', $data_login);
@@ -67,10 +67,10 @@ class Login_model extends CI_Model {
 
     public function nueva_pass($data){
 
-        $data['pass'] = hash('ripemd160',$data['pass']);
+        $data['password'] = hash('ripemd160',$data['password']);
 
         $data_update = array(
-            'password' => $data['pass'],
+            'password' => $data['password'],
             'setear' => 'F'
         );
 

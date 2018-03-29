@@ -98,8 +98,13 @@ class Vmca_model extends CI_Model {
         $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
+<<<<<<< HEAD
             'mensaje' => 'Empresas cargados exitosamente',
             'empresas' => $query->result()
+=======
+            'mensaje' => 'Modulos cargados exitosamente',
+            'tipos' => $query->result()
+>>>>>>> 62cbd7e4aea8d6de0e6e7d58e4a6b4abd577a289
         );
 		return $resultado;
 	}

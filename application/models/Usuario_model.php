@@ -73,7 +73,6 @@ class Usuario_model extends CI_Model {
             'fecha_nacimiento' => $data['fecha_nacimiento'],
             'direccion' => $data['direccion'],
             'pais_origen' => $data['pais_origen'],
-            'pais_residencia' => $data['pais_residencia'],
             'pais_residencia' => $data['pais_residencia']
         ); 
         //$this->db->insert('usuarios_info_personal', $data_insert);  
@@ -173,7 +172,7 @@ class Usuario_model extends CI_Model {
 
         $query = $this->db->get_where('modulos_usuarios',$data_insert);
 
-        if( $query->num_rows() > 0 ){
+        if( $query->num_rows() == 0 ){
             $this->db->insert('modulos_usuarios', $data_insert);
             $respuesta = array(
                 'err' => FALSE,
