@@ -87,8 +87,10 @@ class Empresa_model extends CI_Model {
     *******************************/
 
     public function todos(){
-        $this->db->select('id, codigo, nombre');
-        $query = $this->db->get('empresas');
+        $this->db->select('e.id, e.nombre, e.codigo, v.nombre as tipo_empresa');
+        $this->db->from('empresas e');
+        $this->db->join('vmca_tipo_empresa v', 'e.id_tipo_empresa= v.id');
+        $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
             'mensaje' => 'Empresas cargadas exitosamente',
@@ -97,13 +99,19 @@ class Empresa_model extends CI_Model {
 
         return $resultado;
     }
+        
+
 
     /*******************************
         Traer empresa por ID
     *******************************/
 
     public function por_id($id){
-        $query = $this->db->get_where('empresas', array('id' => $id));
+        $this->db->select('e.id, e.id_tipo_empresa, v.nombre as tipo_empresa, e.codigo, e.nombre, e.habilitado, e.alias, e.condicion_pago');
+        $this->db->from('empresas e');
+        $this->db->join('vmca_tipo_empresa v', 'e.id_tipo_empresa= v.id');
+        $this->db->where('e.id', $id);
+        $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
             'mensaje' => 'Empresa cargada exitosamente',

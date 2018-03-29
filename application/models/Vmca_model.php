@@ -27,8 +27,7 @@ class Vmca_model extends CI_Model {
         $resultado = array(
             'err' => FALSE,
             'mensaje' => 'Lineas de servicio cargadas exitosamente',
-			'L
-			lineas de servicio' => $query->result()
+			'lineas' => $query->result()
         );
 		return $resultado;
 	}
@@ -40,7 +39,7 @@ class Vmca_model extends CI_Model {
         $resultado = array(
             'err' => FALSE,
             'mensaje' => 'Tipos de servicio cargados exitosamente',
-            'tipos de servicio' => $query->result()
+            'servicios' => $query->result()
         );
 		return $resultado;
 	}
@@ -95,12 +94,12 @@ class Vmca_model extends CI_Model {
 
 	public function traer_tipoempresa(){
 		$this->db->select('*');
-        $this->db->from('vmca_modulos');
+        $this->db->from('vmca_tipo_empresa');
         $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
-            'mensaje' => 'Modulos cargados exitosamente',
-            'módulos' => $query->result()
+            'mensaje' => 'Empresas cargados exitosamente',
+            'empresas' => $query->result()
         );
 		return $resultado;
 	}

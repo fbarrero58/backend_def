@@ -58,8 +58,11 @@ class Proyecto_model extends CI_Model {
 
     public function todos(){
 
-        $this->db->select('id, codigo, nombre');
-        $query = $this->db->get('proyectos');
+        $this->db->select('p.id,p.nombre, p.codigo, p.id_empresa, p.nombre as empresa, p.id_tipo_servicio,v.nombre as tipo_servicio, p.id_oportunidad, p.fecha_inicio,p.fecha_fin');
+        $this->db->from('proyectos p');
+        $this->db->join('empresas e', 'p.id_empresa=e.id');
+        $this->db->join('vmca_tipo_servicio v', 'p.id_tipo_servicio = v.id');
+        $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
             'mensaje' => 'Proyectos cargados exitosamente',
@@ -75,12 +78,11 @@ class Proyecto_model extends CI_Model {
     *******************************/
 
     public function por_id($id){
-        $this->db->select('a.id, b.nombre as Empresa, c.nombre as Servicio, d.nombre as Linea, a.nombre, a.fecha_inicio, a.fecha_fin, a.habilitado, a.tiene_ticket, a.horas_disponibles, a.facturable');
-        $this->db->from('proyectos a');
-        $this->db->join('empresas b', 'a.id_empresa = b.id');
-        $this->db->join('vmca_tipo_servicio c', 'a.id_tipo_servicio = c.id');
-        $this->db->join('vmca_lineas_servicio d', 'a.id_linea_servicio = d.id');
-        $this->db->where(array('a.id' => $id));
+        $this->db->select('p.id, p.id_empresa, e.nombre as empresa, p.id_tipo_servicio, v.nombre as tipo_servicio, p.id_linea_servicio, p.id_alianza, p.id_oportunidad, p.codigo, p.nombre, p.fecha_inicio, p.fecha_fin, p.habilitado, p.tiene_ticket, p.horas_disponibles, p.facturable');
+        $this->db->from('proyectos p');
+        $this->db->join('empresas e', 'p.id_empresa=e.id');
+        $this->db->join('vmca_tipo_servicio v', 'p.id_tipo_servicio = v.id');
+        $this->db->where(array('p.id' => $id));
         $query = $this->db->get();
         $resultado = array(
             'err' => FALSE,
@@ -98,7 +100,12 @@ class Proyecto_model extends CI_Model {
     public function actualizar( $id, $data ){
 
         $data_update = array(
-            'id_tipo_servicio' => $data['tipo_servicio'],
+            'id_empresa' => $data['id_empresa'],
+            'id_tipo_servicio' => $data['id_tipo_servicio'],
+            'id_linea_servicio' => $data['id_linea_servicio'],
+            'id_alianza' => $data['id_alianza'],
+            'id_oportunidad' => $data['id_oportunidad'],
+            'codigo' => $data['codigo'],
             'nombre' => $data['nombre'],
             'fecha_inicio' => $data['inicio'],
             'fecha_fin' => $data['fin'],

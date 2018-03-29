@@ -52,14 +52,13 @@ $config = array(
 		array( 'field'=>'codigo', 'label'=>'Código','rules'=>'trim|required' ),
 		array( 'field'=>'nombre', 'label'=>'Nombre del proyecto','rules'=>'trim|required' ),
 		array( 'field'=>'inicio', 'label'=>'Fecha de inicio','rules'=>'trim|required' ),
-		array( 'field'=>'fin', 'label'=>'Fecha de finalización','rules'=>'trim|required' ),
 		array( 'field'=>'habilitado', 'label'=>'Habilitado','rules'=>'trim|required' ),
 		array( 'field'=>'ticket', 'label'=>'Habilitar Ticket','rules'=>'trim|required' ),
 		array( 'field'=>'facturable', 'label'=>'Facturable','rules'=>'trim|required' ),
 	),
 
 	'proyectos_put' => array(
-		array( 'field'=>'tipo_servicio', 'label'=>'Tipo de Servicio','rules'=>'trim|required' ),
+		array( 'field'=>'id_tipo_servicio', 'label'=>'Tipo de Servicio','rules'=>'trim|required' ),
 		array( 'field'=>'nombre', 'label'=>'Nombre del proyecto','rules'=>'trim|required' ),
 		array( 'field'=>'inicio', 'label'=>'Fecha de inicio','rules'=>'trim|required' ),
 		array( 'field'=>'fin', 'label'=>'Fecha de finalización','rules'=>'trim|required' ),

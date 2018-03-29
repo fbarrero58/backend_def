@@ -40,7 +40,7 @@ class Empresas extends REST_Controller {
             
             $data = $this->Empresa_model->insertar($data);
 
-            if($data['error']){
+            if($data['err']){
                 return $this->response($data,400);
             }
 
